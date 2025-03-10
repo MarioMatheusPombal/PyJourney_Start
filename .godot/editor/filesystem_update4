@@ -1,0 +1,4 @@
+res://Scenes/Main.tscn
+res://Scripts/PlayerHand.gd
+res://Scripts/Card.gd
+res://Scripts/CardManager.gd

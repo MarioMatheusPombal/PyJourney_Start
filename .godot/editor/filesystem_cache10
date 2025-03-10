@@ -1,0 +1,16 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1741615158
+icon.svg::CompressedTexture2D::1236151480425635173::1741615139::1741615159::1::::<><><>0<>0<>8cc1520e5d42c65df4505eefe7adf5e6<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+README.md::TextFile::-1::1741615139::0::1::::<><><>0<>0<><>::
+::res://Scenes/::1741615139
+Card.tscn::PackedScene::7999774832646196393::1741615139::0::1::::<><><>0<>0<><>::uid://dithop18h33h3::::res://Sprites/card2.png<>uid://b7lnrobtmvvhb::::res://Scripts/Card.gd
+card_slot.tscn::PackedScene::8450975355425387526::1741615139::0::1::::<><><>0<>0<><>::uid://cmehp23fhnmwo::::res://Sprites/CardSlot.png<>uid://bqreetxdnqqj::::res://Scripts/CardSlot.gd
+Main.tscn::PackedScene::2812797906333868916::1741615139::0::1::::<><><>0<>0<><>::uid://dlp3rxhic4dkn::::res://Scripts/CardManager.gd<>uid://dl8fef4cnud2x::::res://Scenes/Card.tscn<>uid://dsnylg11j00ec::::res://Scenes/card_slot.tscn
+::res://Scripts/::1741615139
+Card.gd::GDScript::4655992252559007563::1741615139::0::1::::<>Node2D<><>0<>0<><>::
+CardManager.gd::GDScript::7964036650920384181::1741615139::0::1::::<>Node2D<><>0<>0<><>::
+CardSlot.gd::GDScript::104258460249876513::1741615139::0::1::::<>Node2D<><>0<>0<><>::
+::res://Sprites/::1741615139
+card1.png::CompressedTexture2D::6183409291413008993::1741615139::1741615159::1::::<><><>0<>0<>741084ee5f09aa57daeec785f75ddfa9<>res://.godot/imported/card1.png-356d1bba66b985bd06fbdfb1aebde4b8.ctex::
+card2.png::CompressedTexture2D::7760446827099755242::1741615139::1741615159::1::::<><><>0<>0<>fdb7a599e750f13326fa48775f0de598<>res://.godot/imported/card2.png-4168626177a2379398393e4ffc136622.ctex::
+CardSlot.png::CompressedTexture2D::5623818269538803106::1741615139::1741615159::1::::<><><>0<>0<>d56304ec1a0851821661f11e2b162b41<>res://.godot/imported/CardSlot.png-5354de071d47950893ba4a4cf591d9f4.ctex::
