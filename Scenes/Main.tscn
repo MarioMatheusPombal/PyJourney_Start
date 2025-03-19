@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bgcsmumt43nui"]
+[gd_scene load_steps=13 format=3 uid="uid://bgcsmumt43nui"]
 
 [ext_resource type="Script" uid="uid://dlp3rxhic4dkn" path="res://Scripts/CardManager.gd" id="1_idj7w"]
 [ext_resource type="Script" uid="uid://c17phok0tiwcy" path="res://Scripts/MagicCardSlot.gd" id="3_jw32o"]
@@ -7,7 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://cou3ypkx8jnp0" path="res://Scenes/EnemyCardSlot.tscn" id="4_50glp"]
 [ext_resource type="Script" uid="uid://d132jp7shq1qr" path="res://Scripts/deck.gd" id="4_pbw6q"]
 [ext_resource type="Texture2D" uid="uid://c8vd85r2ypejp" path="res://Sprites/Deck.png" id="5_v1gob"]
+[ext_resource type="Script" uid="uid://djxv2pmpixnvb" path="res://Scripts/EnemyHand.gd" id="6_bmxlf"]
 [ext_resource type="Script" uid="uid://cjbbd2a4e60td" path="res://Scripts/input_manager.gd" id="6_v1gob"]
+[ext_resource type="Script" uid="uid://ekhmayyx6cyv" path="res://Scripts/BattleManager.gd" id="9_vy5pj"]
+[ext_resource type="Script" uid="uid://dxdd2xpd3bo6l" path="res://Scripts/EnemyDeck.gd" id="10_4kpch"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jw32o"]
 size = Vector2(180, 264)
@@ -117,6 +120,9 @@ scale = Vector2(0.6, 0.6)
 [node name="PlayerHand" type="Node2D" parent="."]
 script = ExtResource("3_rgh2o")
 
+[node name="EnemyHand" type="Node2D" parent="."]
+script = ExtResource("6_bmxlf")
+
 [node name="Deck" type="Node2D" parent="."]
 position = Vector2(140, 955)
 scale = Vector2(0.8, 0.8)
@@ -153,15 +159,16 @@ offset_right = 424.0
 offset_bottom = 601.0
 text = "Finalizar Turno"
 
-[node name="OpponentDeck" type="Node2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="OpponentDeck"]
-z_index = -2
+[node name="EnemyDeck" type="Node2D" parent="."]
 position = Vector2(1780, 125)
+script = ExtResource("10_4kpch")
+
+[node name="Sprite2D" type="Sprite2D" parent="EnemyDeck"]
+z_index = -2
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("5_v1gob")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="OpponentDeck"]
+[node name="RichTextLabel" type="RichTextLabel" parent="EnemyDeck"]
 modulate = Color(0, 0, 0, 1)
 z_index = -2
 offset_left = 1772.8
@@ -170,3 +177,10 @@ offset_right = 1812.8
 offset_bottom = 142.6
 scale = Vector2(2, 2)
 text = "0"
+
+[node name="BattleManager" type="Node" parent="."]
+script = ExtResource("9_vy5pj")
+
+[node name="BattleTimer" type="Timer" parent="."]
+
+[connection signal="pressed" from="FinalizarTurnoBotao" to="BattleManager" method="_on_finalizar_turno_botao_pressed"]

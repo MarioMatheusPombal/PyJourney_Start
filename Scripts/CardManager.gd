@@ -118,3 +118,6 @@ func get_card_with_highest_z_index(cards):
 			highest_z_card = current_card
 			highest_z_index = highest_z_card.z_index
 	return highest_z_card
+
+func reset_played_monster():
+	played_monster_card_this_turn = false
