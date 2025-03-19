@@ -1,4 +1,10 @@
 res://Scenes/Main.tscn
 res://Scenes/Card.tscn
+res://Scripts/CardManager.gd
+res://Scripts/PlayerHand.gd
+res://Scripts/Card.gd
 res://Scripts/deck.gd
 res://Scripts/CardDatabase.gd
+res://Scripts/MonsterCardSlot.gd
+res://Scripts/MagicCardSlot.gd
+res://Scenes/EnemyCardSlot.tscn

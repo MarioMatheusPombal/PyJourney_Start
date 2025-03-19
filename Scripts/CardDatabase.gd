@@ -1,5 +1,5 @@
-const CARDS = { #Attack, Health
-	"Soldier" : [2, 3], 
-	"Archer" : [1, 1], 
-	"Demon" : [5, 7]
+const CARDS = { #Attack, Health, CardType
+	"Soldier" : [2, 3, "Monster"], 
+	"Archer" : [1, 1, "Monster"], 
+	"Demon" : [5, 7, "Monster"]
 }

@@ -3,11 +3,14 @@ extends Node2D
 const COLLISION_MASK_CARD = 1
 const COLLISION_MASK_CARD_SLOT = 2
 const DEFAULT_CARD_MOVE_SPEED = 0.1
+const DEFAULT_CARD_SCALE = 0.8
+const CARD_SMALLER_SCALE = 0.6
 
 var screen_size
 var card_being_dragged
 var is_hovering_on_card
 var player_hand_reference
+var played_monster_card_this_turn = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,19 +26,27 @@ func _process(delta: float) -> void:
 
 func start_drag(card):
 	card_being_dragged = card
-	card.scale = Vector2(1, 1)
+	card.scale = Vector2(DEFAULT_CARD_SCALE, DEFAULT_CARD_SCALE)
 
 func finish_drag():
-	card_being_dragged.scale = Vector2(1.05, 1.05)
+	card_being_dragged.scale = Vector2(DEFAULT_CARD_SCALE + 0.05, DEFAULT_CARD_SCALE + 0.05)
 	var card_slot_found = raycast_check_for_card_slot()
 	if card_slot_found and not card_slot_found.card_in_slot:
-		player_hand_reference.remove_card_from_hand(card_being_dragged)
-		#Card dropped in empty card slot
-		card_being_dragged.position = card_slot_found.position
-		card_being_dragged.get_node("Area2D/CollisionShape2D").disabled = true
-		card_slot_found.card_in_slot = true
-	else:
-		player_hand_reference.add_card_to_hand(card_being_dragged, DEFAULT_CARD_MOVE_SPEED)
+		#If the card can be placed in this slot
+		if card_being_dragged.card_type == card_slot_found.card_slot_type:
+			if !played_monster_card_this_turn:
+				#Card dropped in empty card slot
+				card_being_dragged.scale = Vector2(CARD_SMALLER_SCALE,CARD_SMALLER_SCALE)
+				card_being_dragged.z_index = -1
+				is_hovering_on_card = false
+				card_being_dragged.card_slot_card_is_in = card_slot_found
+				player_hand_reference.remove_card_from_hand(card_being_dragged)
+				card_being_dragged.position = card_slot_found.position
+				card_being_dragged.get_node("Area2D/CollisionShape2D").disabled = true
+				card_slot_found.card_in_slot = true
+				card_being_dragged = null
+				return
+	player_hand_reference.add_card_to_hand(card_being_dragged, DEFAULT_CARD_MOVE_SPEED)
 	card_being_dragged = null	
 
 func connect_card_signals(card):
@@ -52,7 +63,8 @@ func on_hovered_over_card(card):
 		highlight_card(card,true)
 	
 func on_hovered_off_card(card):
-	if !card_being_dragged:
+	# Check if card is NOT in a card slot and NOT being dragged
+	if !card.card_slot_card_is_in && !card_being_dragged:
 		#if not dragging
 		highlight_card(card,false)
 		#Check if hovered off card straight on to another card
@@ -64,10 +76,10 @@ func on_hovered_off_card(card):
 
 func highlight_card(card, hovered):
 	if hovered:
-		card.scale = Vector2(1.05, 1.05)
+		card.scale = Vector2(DEFAULT_CARD_SCALE + 0.05, DEFAULT_CARD_SCALE + 0.05)
 		card.z_index = 2
 	else:
-		card.scale = Vector2(1, 1)
+		card.scale = Vector2(DEFAULT_CARD_SCALE, DEFAULT_CARD_SCALE)
 		card.z_index = 1
 
 func raycast_check_for_card_slot():
