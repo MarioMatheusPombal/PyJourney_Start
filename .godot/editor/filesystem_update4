@@ -1,11 +1,9 @@
 res://Scenes/Main.tscn
-res://Scenes/BattleManager.gd
-res://Scripts/EnemyDeck.gd
-res://Scripts/EnemyHand.gd
+res://Scripts/BattleManager.gd
 res://Scenes/Card.tscn
 res://Scenes/EnemyCardSlot.tscn
 res://Scenes/EnemyCard.tscn
+res://Scripts/Card.gd
 res://Scripts/EnemyCard.gd
-res://Scripts/BattleManager.gd
 res://Scripts/deck.gd
-res://Scripts/CardManager.gd
+res://Scripts/EnemyDeck.gd

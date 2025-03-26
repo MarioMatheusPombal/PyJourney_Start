@@ -38,8 +38,10 @@ func draw_card():
 	var new_card = card_scene.instantiate()
 	var card_image_path = str("res://Sprites/" +card_drawn_name+ ".png")
 	new_card.get_node("CardImage").texture = load(card_image_path)
-	new_card.get_node("Attack").text = str(card_database_reference.CARDS[card_drawn_name][0])
-	new_card.get_node("Health").text = str(card_database_reference.CARDS[card_drawn_name][1])
+	new_card.attack = card_database_reference.CARDS[card_drawn_name][0]
+	new_card.get_node("Attack").text = str(new_card.attack)
+	new_card.health = card_database_reference.CARDS[card_drawn_name][1]
+	new_card.get_node("Health").text = str(new_card.health)
 	new_card.card_type = card_database_reference.CARDS[card_drawn_name][2]
 	$"../CardManager".add_child(new_card)
 	new_card.name = "Card"
