@@ -1,3 +1,5 @@
+CollisionShape2D
+Area2D
 Sprite2D
 Node2D
 RichTextLabel
@@ -5,5 +7,3 @@ Timer
 Node
 Button
 AnimationPlayer
-CollisionShape2D
-Area2D
